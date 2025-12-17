@@ -1,0 +1,87 @@
+<!-- # Weather Finder – Project Description
+
+## 📌 Problem Statement
+Create a simple webpage where the user can type a city name, click a button, and instantly view the current weather for that city. The displayed weather should include temperature and windspeed.
+## 📌 API Information
+To get weather data, your code must follow **two steps**:
+
+### 1️⃣ Convert city name → coordinates  
+Use the **Geocoding API**:  
+https://open-meteo.com/en/docs/geocoding-api  
+
+From this API, you need:
+- Latitude  
+- Longitude  
+- Country  
+
+### 2️⃣ Use coordinates → get current weather  
+Use the **Weather Forecast API**:  
+https://open-meteo.com/en/docs  
+
+Include this parameter in the request:
+- `current_weather=true`  
+
+Before coding, read both documentation pages to understand:
+- How to build request URLs  
+- Which JSON fields contain the required data  
+
+## 📌 Testing and Debugging
+### Step 1: Use Postman
+- Send test requests to both APIs  
+- Observe the response structure  
+- Identify required fields  
+
+This helps you understand the data before writing any code.
+
+### Step 2: Build & Test Locally
+- Create `index.html` and `script.js`  
+- Open your HTML file in the browser to test  
+- Use DevTools:
+  - **Sources tab** → debug your JavaScript  
+  - **Network tab** → view API requests and responses  
+## 📌 Your Task (What the Webpage Must Contain)
+- An input box for entering the city name  
+- A **“Get Weather”** button  
+- A weather details section that will display:
+  - City name  
+  - Country  
+  - Temperature (°C)  
+  - Windspeed  
+## 📌 When the User Clicks the Button
+1. Read and trim the city name  
+2. Call the **Geocoding API** → get latitude, longitude, country  
+3. Call the **Weather Forecast API** using:
+   - latitude  
+   - longitude  
+   - `current_weather=true`  
+4. If successful, display:
+   - City  
+   - Country  
+   - Temperature (°C)  
+   - Windspeed  
+## 📌 Error Handling
+Show appropriate error messages when:
+- The input box is empty  
+- The city is not found  
+- Weather data is missing  
+- An API request fails (network error, invalid JSON, etc.)  
+
+## 📌 Recommended File Structure
+- `index.html`  
+- `script.js`  
+- `styles.css` (optional)  
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!-- # Movie Finder – Project Description
+
+## 📌 Overview
+This project is a simple webpage where a user can type the name of a movie or TV series and view its main details instantly. It helps users quickly check release year, type, rating, poster, and plot of any title they want.
+
+---
+
+## 📌 API Information
+This project uses the **OMDb API (Open Movie Database)**.  
+You must register on the OMDb website to get your personal API key.
+
+Before coding, check the documentation to understand:
+- Which parameter searches by exact title (`t`)
+- How to include your API key using `apikey`
+- Which fields you need to display (title, year, type, rating, poster, plot)
+
+---
+
+## 📌 Testing Before Coding
+To understand how the API works:
+1. Test the API in **Postman**  
+   - Send a request  
+   - Check the response fields  
+2. Then start building your project locally  
+   - Use an `index.html` and a `script.js`  
+   - Open the HTML file in the browser and use DevTools  
+     - **Network tab** to check API calls  
+     - **Sources tab** to debug your code  
+
+---
+
+## 📌 What the Webpage Must Contain
+The webpage should have:
+- An input box to type a movie or series name  
+- A **Search** button  
+- A section to show:
+  - Title  
+  - Year  
+  - Type (movie/series)  
+  - IMDb rating  
+  - Poster image  
+  - Plot summary  
+- An area for error messages  
+
+---
+
+## 📌 Required Behavior
+- On page load:
+  - All details remain empty  
+  - No API call happens automatically  
+
+- When user clicks **Search**:
+  - Read the input and trim extra spaces  
+  - Clear old details and errors  
+  - If input is empty → show an error message  
+  - If input is valid → call the OMDb API  
+
+- After API response:
+  - If no movie/series is found → show an error message  
+  - If valid data is received → fill all detail fields  
+  - If poster is `"N/A"` → show “No poster available”  
+
+---
+
+## 📌 Error Handling
+If the fetch fails due to network issues or unexpected API response:
+- Show the error message in the error area  
+- Keep the detail fields empty to avoid confusion  
+
+---
+
+## 📌 Folder Structure (Recommended)
+- `index.html`  
+- `script.js`  
+- `styles.css` (optional)
+
+---
+
+
+ -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Movie Finder</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+ 
+  <div class="container">
+      <div id="searchSection">
+        <input id="searchBox" type="text" placeholder="Enter movie name">
+        <button id="searchBtn">Search</button>
+      </div>
+      <div id="movieList"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
+

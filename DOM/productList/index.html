@@ -1,0 +1,36 @@
+<!-- Problem Statement
+You are designing a product list page where users can search for items in real time. As the user types in the search box, only the products that match the entered text should remain visible — the rest should be hidden.
+
+Note: Use Inspect Element in your browser to understand how your code is operating.
+
+Your Task
+Create an HTML page that contains:
+A <h2> heading with the text “Product List”.
+An <input> box with id searchBox and a placeholder “Search products...”.
+A <div> container with id productContainer holding multiple <p> elements for different products, for example: “Apple”, “Banana”, “Grapes”, “Mango”, and “Orange”.
+Write JavaScript code that performs the following:
+As the user types in the search box, compare the typed text with each product name.
+Show only the products that include the typed text (case-insensitive) and hide all others.
+
+Note: Ensure the search updates live as the user types, without requiring a button click. -->
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Page</title>
+</head>
+<body>
+   <h1>Product List</h1>
+   <input id="searchBox" placeholder="Search products...">
+   <div id="productContainer">
+    <p>Apple</p>
+    <p>Banana</p>
+    <p>Grapes</p>
+    <p>Mango</p>
+   </div>
+   <script src="script.js"></script>
+</body>
+</html>

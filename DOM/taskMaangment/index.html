@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>My Page</title>
+</head>
+
+<body>
+  <div id="inputSection">
+    <label for="inputTask">Task name : </label>
+    <input type="text" id="inputTask" placeholder="Enter task name">
+    <select id="selectPriority">
+      <option value="">Select Priority</option>
+      <option value="High">High</option>
+      <option value="Medium">Medium</option>
+      <option value="Low">Low</option>
+    </select>
+    <button id="addBtn">Add Task</button>
+  </div>
+  <div>
+    <select id="filter">
+      <option value="">Select One</option>
+      <option value="all">All</option>
+      <option value="pending">pending</option>
+      <option value="completed">Completed</option>
+    </select>
+    <button id="sortBtn">Sort by Priority</button>
+    <div id="taskListSection"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

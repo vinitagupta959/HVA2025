@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Page</title>
+  <style>
+    #boxContainer {
+      margin: 4px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(100px, 1fr));
+    }
+
+    .boxDeactive {
+      width: 120px;
+      height: 200px;
+      border:2px solid black;
+      display:inline-block;
+      background-color: gray;
+    }
+  </style>
+</head>
+
+<body>
+  <button id="startBtn">Start</button>
+ <p id="score">Score : </p>
+ <p id="timeUpMsg"></p>
+  <div id="boxContainer">
+    <div class="boxDeactive"></div>
+    <div class="boxDeactive"></div>
+    <div class="boxDeactive"></div>
+    <div class="boxDeactive"></div>
+    <div class="boxDeactive"></div>
+    <div class="boxDeactive"></div>
+    <div class="boxDeactive"></div>
+    <div class="boxDeactive"></div>
+    <div class="boxDeactive"></div>
+  </div>
+
+  <script src="scrpt.js"></script>
+</body>
+
+</html>

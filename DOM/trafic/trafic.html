@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #btn1 {
+            height: 80px;
+            width: 120px;
+            border-radius: 60%;
+        }
+
+        #btn2 {
+            height: 80px;
+            width: 120px;
+            border-radius: 60%;
+        }
+
+        #btn3 {
+            height: 80px;
+            width: 120px;
+            border-radius: 60%;
+        }
+
+        div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+        }
+
+        #startbtn {
+            height: 60px;
+            width: 120px;
+            font-size: 25px;
+            border-radius: 20px;
+            background-color: blue;
+            color: #fff;
+            margin: 20px;
+            margin-left: 670px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="startbtn">Start</button>
+    <div>
+        <button id="btn1"></button>
+        <button id="btn2"></button>
+        <button id="btn3"></button>
+    </div>
+    <script>
+        let button1 = document.getElementById("btn1");
+        let button2 = document.getElementById("btn2");
+        let button3 = document.getElementById("btn3");
+        let Startbtn = document.getElementById("startbtn");
+
+        Startbtn.addEventListener("click", () => {
+            greenFunction()
+                .then(() => yellowFunction())
+                .then(() => redFunction())
+                .catch(err => console.log("error", err));
+        })
+
+        function greenFunction() {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    button1.style.backgroundColor = ""
+                    button2.style.backgroundColor = ""
+                    button3.style.backgroundColor = "green"
+                    resolve();
+                }, 6000);
+            })
+        }
+
+        function yellowFunction() {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    console.log("rtyu");
+                    button1.style.backgroundColor = ""
+                    button2.style.backgroundColor = "yellow"
+                    button3.style.backgroundColor = ""
+                    resolve();
+                }, 2000);
+            })
+        }
+
+        function redFunction() {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    console.log("ghuj");
+                    
+                    button1.style.backgroundColor = "red"
+                    button2.style.backgroundColor = ""
+                    button3.style.backgroundColor = ""
+                    resolve();
+                }, 6000);
+            })
+        }
+
+    </script>
+</body>
+
+</html>

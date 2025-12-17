@@ -1,0 +1,80 @@
+<!-- /* # Trivia Explorer – Short & Clear Project Instructions
+
+## 📌 Overview
+Build a simple webpage that:
+- Shows **one random trivia question**
+- Lets the user **reveal the answer**
+- Loads a **new question**
+- No scoring required
+
+## 📌 API Used
+**The Trivia API (v2)**  
+Documentation: https://the-trivia-api.com/docs/v2/
+
+Use the endpoint that returns:
+- One random question  
+Fields you need:
+- Question text  
+- Correct answer  
+- Category  
+- Difficulty  
+
+## 📌 Features Required
+Your webpage must include:
+- Question area  
+- Category + Difficulty  
+- Answer area  
+- Error message area  
+- **Show Answer** button  
+- **Next Question** button (disabled at start)
+
+## 📌 Page Load Behavior
+When the page opens:
+- Fetch **one random question**
+- Show question, category, difficulty
+- Hide the answer
+- Enable **Show Answer**
+- Disable **Next Question**
+
+## 📌 On “Show Answer” Click
+- Display the answer  
+- Disable **Show Answer**
+- Enable **Next Question**
+
+## 📌 On “Next Question” Click
+- Fetch a **new** question  
+- Update question, category, difficulty  
+- Clear old answer  
+- Clear old error  
+- Disable **Next Question**  
+- Enable **Show Answer**
+
+## 📌 Error Handling
+If any error happens:
+- Show the error message  
+- Do **not** leave the page empty or broken  
+
+## 📌 File Structure
+ */
+
+
+ -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Page</title>
+</head>
+<body>
+   <div>
+    <h3 id="questionText"></h3>
+    <h4 id="category&diff"></h4>
+    <p id="correctMsg"></p>
+    <p id="errMsg"></p>
+    <button id="showAnswer">Show Answer</button>
+    <button id="nextQues">Next Question</button>
+   </div>
+   <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trivia Quize Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h3 id="headingText">Trivia Quiz Game</h3>
+    </header>
+    <section id="mainContainer">
+        <div id="playerSetup">
+            <input type="text" id="player1" placeholder="Enter First Player Name">
+            <p id="errorPlyer1"></p>
+            <input type="text" id="player2" placeholder="Enter Second Player Name">
+            <p id="errorPlyer2"></p>
+            <button id="startBtn">Start</button>
+        </div>
+
+        <div id="categoryPage" style="display: none;">
+            <div id="playerNames">
+                <p id="playerName1"></p>
+                <p id="playerName2"></p>
+            </div>
+            <select name="category" id="allCategory">
+                <option value="">Select Category</option>
+                <option value="music">Music</option>
+                <option value="sport_and_leisure">Sport & Leisure</option>
+                <option value="film_and_tv">Film & Tv</option>
+                <option value="arts_and_literature">Arts & Literature</option>
+                <option value="history">History</option>
+                <option value="society_and_culture">Society & Culture</option>
+                <option value="science">Science</option>
+                <option value="geography">Geography</option>
+                <option value="food_and_drink">Food & Drink</option>
+                <option value="general_knowledge">General Knowledge</option>
+            </select>
+            <button id="startGame" type="button">Start Game</button>
+        </div>
+        <div id="errMegPage"></div>
+        <div id="questionPage" style="display: none;">
+            <h3 id="playerTurn"></h3>
+            <div id="questionContainer">
+                <h3 id="que"></h3>
+                <div id="optionsContainer">
+                    <input type="radio" class="options" id="option1"> <label for="option1" class="optionText"> </label>
+
+                    <input type="radio" class="options" id="option2"><label for="option2" class="optionText"></label>
+
+                    <input type="radio" class="options" id="option3">
+                    <label for="option3" class="optionText"></label>
+
+                    <input type="radio" class="options" id="option4"> <label for="option4" class="optionText"></label>
+                </div>
+                <button id="nextBtn" type="button" disabled>Next Question</button>
+            </div>
+        </div>
+    </section>
+
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
+
+
+
+
+<!-- All category
+ "music" "sport_and_leisure" "film_and_tv" "arts_and_literature" "history" "society_and_culture" "science" "geography" "food_and_drink" "general_knowledge" -->

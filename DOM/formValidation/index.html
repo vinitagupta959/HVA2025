@@ -1,0 +1,59 @@
+<!-- Real-Time Form Validator with Summary
+Problem Statement
+You are creating a simple registration form that validates user input in real-time. The form contains fields for Name, Email, Password, and Confirm Password. Each field must be mandatory, and validation messages should appear right below each field when the user leaves the field.
+
+When the form is submitted, all entered details should be displayed below the form in a summary section.
+
+Your Task
+Create an HTML structure that contains:
+A <form> element with id registerForm.
+Inside the form, include the following fields, each with a preceding <label> and a <p> below for validation messages:
+Name: <input> with id nameInput.
+Email: <input> with id emailInput.
+Password: <input> with id passwordInput and type password.
+Confirm Password: <input> with id confirmPasswordInput and type password.
+A <button> to submit the form.
+A <div> below the form with id summarySection to display submitted form details.
+Implement validation rules for the form fields:
+All fields are required and must not be empty.
+The Email field must contain an “@” symbol.
+The Password and Confirm Password fields must match.
+On blur (when the user leaves a field), show a validation message in the corresponding <p> if the input is invalid. Remove the message if the input becomes valid.
+Handle form submission:
+Prevent the default submission behavior.
+If all fields are valid, display the entered details inside the summarySection <div>.
+If there are any validation errors, do not submit the form or display the summary.
+
+Note: Write the HTML code in the HTML editor and the JavaScript code in the JavaScript editor.
+
+
+ -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Page</title>
+  </head>
+
+  <body>
+    <form id="registerForm">
+      <label for="nameInput">Name:</label>
+      <input id="nameInput" type="text" />
+      <p></p>
+
+      <label for="emailInput">Email:</label>
+      <input id="emailInput" type="email"/>
+      <p></p>
+
+      <label for="passwordInput">Password:</label>
+      <input id="passwordInput" type="password" />
+      <label for="confirmPasswordInput">Confirm Password: </label>
+      <input id="confirmPasswordInput" type="password" />
+      <p></p>
+
+      <button type="submit" id="submitBtn">Submit</button>
+    </form>
+    <div id="summarySection"></div>
+    <script src="app.js"></script>
+  </body>
+</html>

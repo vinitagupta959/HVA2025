@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Page</title>
+  <style>
+    #newsList{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .newsCard img{
+    width: 200px;
+  }
+  </style>
+</head>
+<body>
+ <div id="mainContainer">
+  <input id="searchBox" placeholder="Ask anything">
+  <button id="searchBtn">Search</button>
+ </div>
+ <div id="newsList"> 
+ </div>
+ <p id="errorMsg"></p>
+ <script src="app.js"></script>
+</body>
+</html>

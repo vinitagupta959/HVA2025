@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Reflex Boxes — Creative & Responsive</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="wrap" role="application" aria-label="Reflex boxes game">
+        <header>
+            <h1>Reflex Boxes — click green fast!</h1>
+            <div class="controls">
+                <button id="startBtn" aria-pressed="false">Start</button>
+                <div class="status">
+                    <div class="badge" id="score" aria-live="polite">Score: 0</div>
+                    <div class="badge timer" id="countdown" aria-live="polite">30s</div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="board" aria-label="Game board">
+                <div id="boxContainer" role="grid" aria-label="Nine boxes grid">
+                    <div class="boxDeactive" role="button" tabindex="0" aria-label="Box 1"></div>
+                    <div class="boxDeactive" role="button" tabindex="0" aria-label="Box 2"></div>
+                    <div class="boxDeactive" role="button" tabindex="0" aria-label="Box 3"></div>
+                    <div class="boxDeactive" role="button" tabindex="0" aria-label="Box 4"></div>
+                    <div class="boxDeactive" role="button" tabindex="0" aria-label="Box 5"></div>
+                    <div class="boxDeactive" role="button" tabindex="0" aria-label="Box 6"></div>
+                    <div class="boxDeactive" role="button" tabindex="0" aria-label="Box 7"></div>
+                    <div class="boxDeactive" role="button" tabindex="0" aria-label="Box 8"></div>
+                    <div class="boxDeactive" role="button" tabindex="0" aria-label="Box 9"></div>
+                </div>
+            </section>
+
+            <aside class="panel" aria-label="Game info">
+                <h3>How to play</h3>
+                <p class="muted">When a box turns green, click or tap it within 1 second to score. A new box activates
+                    every 2 seconds. Game runs for 30 seconds.</p>
+
+                <div style="margin-top:12px;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;">
+                        <div class="muted">Final status</div>
+                        <div id="timeUpMsg" class="muted"></div>
+                    </div>
+                    <div style="margin-top:12px">
+                        <div class="muted">Controls</div>
+                        <div style="display:flex;gap:8px;margin-top:6px;">
+                            <button id="resetBtn"
+                                style="padding:6px 8px;border-radius:8px;border:0;background:#111827;color:#fff;cursor:pointer">Reset</button>
+                            <button id="muteBtn"
+                                style="padding:6px 8px;border-radius:8px;border:0;background:#111827;color:#fff;cursor:pointer">Toggle
+                                Penalty</button>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
