@@ -4,25 +4,52 @@ let startBtn = document.getElementById("startBtn");
 let errorPlyer1 = document.getElementById("errorPlyer1");
 let errorPlyer2 = document.getElementById("errorPlyer2");
 let categoryPage = document.getElementById("categoryPage");
-let playerSetup = document.getElementById("playerSetup");
-let playerName1 = document.getElementById("playerName1");
-let playerName2 = document.getElementById("playerName2");
+let playerSetupPage = document.getElementById("playerSetupPage");
 let startGame = document.getElementById("startGame");
 let allCategory = document.getElementById("allCategory");
 let errMegPage = document.getElementById("errMegPage");
 let questionPage = document.getElementById("questionPage");
 let questionText = document.getElementById("que");
 let allOptions = document.querySelectorAll(".options");
-let allOptionsText=document.querySelectorAll(".optionText");
+let allOptionsText = document.querySelectorAll(".optionText");
+let errorBoth = document.getElementById("errorBoth");
+let roundText = document.getElementById("roundText");
+let answerMsg = document.getElementById("answerMsg");
+let nextBtn = document.getElementById("nextBtn");
+let playerTurnText = document.getElementById("playerTurn");
+let categoryText = document.getElementById("categoryText");
+let difficultyText = document.getElementById("difficultyText");
+let roundTextQue = document.getElementById("roundTextQue");
+let player1ScoreText = document.getElementById("player1Score");
+let player2ScoreText = document.getElementById("player2Score");
+let summaryPage = document.getElementById("summaryPage");
+let nextRoundBtn = document.getElementById("nextRoundBtn");
+let endGameBtn = document.getElementById("endGameBtn");
+let finalResultPage=document.getElementById("finalResultPage");
+let finalScorePlyer1=document.getElementById("finalScorePlyer1");
+let finalScorePlyer2=document.getElementById("finalScorePlyer2");
+let resultContain=document.getElementById("resultText");
+let round = 1;
 let player1;
 let player2;
+let player1Score = 0;
+let player2Score = 0;
+let currectPlayer;
+let category;
+let difficulties;
+let question;
 let i = 0;
+let correctAnswer;
+
 startBtn.addEventListener("click", function () {
-  if (playerInput1.value == "" || playerInput1.value == " ") {
+  if (playerInput1.value == "roundText" || playerInput1.value == " ") {
     errorPlyer1.innerText = "Enter Vaild Name";
     return;
   } else if (playerInput2.value == "" || playerInput2.value == " ") {
     errorPlyer2.innerText = "Enter Vaild Name";
+    return;
+  } else if (playerInput1.value === playerInput2.value) {
+    errorBoth.innerText = "Both player name is same use uniqe one";
     return;
   } else {
     errorPlyer1.innerText = "";
@@ -31,16 +58,19 @@ startBtn.addEventListener("click", function () {
     player2 = playerInput2.value;
   }
   console.log(player1, player2);
-  playerSetup.style.display = "none";
+  playerSetupPage.style.display = "none";
   categoryPage.style.display = "block";
-  playerName1.innerText = player1;
-  playerName2.innerText = player2;
+  roundText.innerText = `Round ${round}`;
+  // playerName1.innerText = player1;
+  // playerName2.innerText = player2;
 });
+
+
 startGame.addEventListener("click", function () {
-  let category = allCategory.value;
-  console.log(category);
+  category = allCategory.value;
   fetchQue(category);
 });
+
 
 async function fetchQue(category) {
   try {
@@ -72,21 +102,24 @@ async function fetchQue(category) {
         "<p>Question not found in this category try with diffenct category</p>";
     } else {
       let allQue = [...data[0], ...data[1], ...data[2]];
-      console.log(allQue);
-      displayQue(allQue);
+      question = allQue;
+      displayQue(question);
     }
   } catch (err) {
     console.log(err.message);
   }
 }
 
+
 function displayQue(questions) {
   categoryPage.style.display = "none";
   questionPage.style.display = "block";
+  nextBtn.disabled = true;
   let item = questions[i];
   let mixAnswer = [...item.incorrectAnswers];
   mixAnswer.push(item.correctAnswer);
-  console.log(mixAnswer);
+  correctAnswer = item.correctAnswer;
+
   for (let j = 0; j < mixAnswer.length; j++) {
     let index = Math.floor(Math.random() * (j + 1));
     let temp;
@@ -94,24 +127,148 @@ function displayQue(questions) {
     mixAnswer[j] = mixAnswer[index];
     mixAnswer[index] = temp;
   }
-  console.log(mixAnswer);
-  questionText.innerText = item.question.text;
-  console.log(allOptions);
-  
-  allOptions[0].value = mixAnswer[0];
-  allOptionsText[0].innerText= mixAnswer[0];
-  allOptions[1].value = mixAnswer[1];
-  allOptionsText[1].innerText= mixAnswer[1];
-  allOptions[2].value = mixAnswer[2];
-  allOptionsText[2].innerText= mixAnswer[2];
-  allOptions[3].value = mixAnswer[3];
-  allOptionsText[3].innerText = mixAnswer[3];
 
-  allOptions.forEach(function(option){
-    option.addEventListener('click',function(){
-      option.style.backgroundColor="red";
-      console.log(option.value);
-      
-    })
+
+  findDifficulty();
+  findCurrentPlayer();
+  player1ScoreText.innerText = `Score: ${player1Score}`;
+  player2ScoreText.innerText = `Score: ${player2Score}`;
+  roundTextQue.innerText = `Round ${round}`;
+  categoryText.innerText = `Category: ${category}`;
+  difficultyText.innerText = `Difficulty: ${difficulties}`;
+  playerTurnText.innerText = `${currectPlayer}'s turn`;
+  questionText.innerText = item.question.text;
+  allOptions.forEach(function(option,index){
+    option.value = mixAnswer[index];
+  allOptionsText[index].innerText = mixAnswer[index];
   })
+
+  // allOptions[1].value = mixAnswer[1];
+  // allOptionsText[1].innerText = mixAnswer[1];
+  // allOptions[2].value = mixAnswer[2];
+  // allOptionsText[2].innerText = mixAnswer[2];
+  // allOptions[3].value = mixAnswer[3];
+  // allOptionsText[3].innerText = mixAnswer[3];
+}
+
+
+allOptions.forEach(function (option) {
+  option.addEventListener("click", function () {
+    let chooseAnswer = option.value;
+    checkAnswer(chooseAnswer);
+  });
+});
+
+
+function checkAnswer(choosenAnswer) {
+   allOptions[0].disabled = true;
+  allOptions[1].disabled = true;
+  allOptions[2].disabled = true;
+  allOptions[3].disabled = true;
+  allOptions.forEach(function(option){
+    if(option.value==choosenAnswer){
+      option.disabled=false;
+    }
+  })
+  if (correctAnswer == choosenAnswer) {
+    answerMsg.innerText =`Correct Answer`;
+    updateScore();
+    player1ScoreText.innerText = `Score: ${player1Score}`;
+    player2ScoreText.innerText = `Score: ${player2Score}`;
+  } else {
+    answerMsg.innerText =`Oh it's Wrong!, Correct answer is: ${correctAnswer}`;
+  }
+  nextBtn.disabled = false;
+}
+
+nextBtn.addEventListener("click", function () {
+  allOptions[0].checked = "";
+  allOptions[1].checked = "";
+  allOptions[2].checked = "";
+  allOptions[3].checked = "";
+   allOptions[0].disabled = false;
+  allOptions[1].disabled = false;
+  allOptions[2].disabled = false;
+  allOptions[3].disabled = false;
+   answerMsg.innerText ="";
+  if (i < 5) {
+    i++;
+    displayQue(question);
+  } else {
+    questionPage.style.display = "none";
+    summaryPage.style.display = "block";
+    removeCategry();
+    i=0;
+  }
+});
+
+endGameBtn.addEventListener('click',function(){
+  summaryPage.style.display="none";
+  finalResultPage.style.display="block";
+  
+  if(player1Score<player2Score){
+    resultContain.innerText=`${player2} is Win the Game`;
+  }else if(player2Score<player1Score){
+    resultContain.innerText=`${player1} is win the Game`
+  }else{
+    resultContain.innerText=`Game draw as both  player have equal score.`
+ }
+ finalScorePlyer1.innerText=`${player1} Score is ${player1Score}`;
+  finalScorePlyer2.innerText=`${player2} Score is ${player2Score}`;
+})
+
+nextRoundBtn.addEventListener('click',function(){
+  console.log(allCategory);
+  summaryPage.style.display="none";
+  categoryPage.style.display="block";
+  allCategory.value="";
+  round+=1
+  roundText.innerText = `Round ${round}`;
+})
+function updateScore() {
+  let score;
+  if (difficulties == "Easy") {
+    score = 10;
+  } else if (difficulties == "Medium") {
+    score = 15;
+  } else {
+    score = 20;
+  }
+  if (currectPlayer == player1) {
+    player1Score += score;
+  } else {
+    player2Score += score;
+  }
+}
+function findCurrentPlayer() {
+  if (i % 2 == 0) {
+    currectPlayer = player1;
+  } else {
+    currectPlayer = player2;
+  }
+}
+function findDifficulty() {
+  if (i < 2) {
+    difficulties = "Easy";
+  } else if (i < 4) {
+    difficulties = "Medium";
+  } else {
+    difficulties = "Hard";
+  }
+}
+
+function removeCategry(){
+  let categoryOptionList=document.querySelectorAll(".categoryOption");
+  console.log(categoryOptionList);
+  
+  if(allCategory.length>2){
+ categoryOptionList.forEach(function(option,index){
+    if(option.value==category){
+      allCategory.removeChild(allCategory[index])
+    }
+  })
+  }else{
+    nextRoundBtn.disabled=true;
+  }
+ 
 }
