@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>All product</h1>
+    <div id="allProducts"></div>
+    <select id="categoryFilter">
+      <option value="">All Categories</option>
+      <option value="Electronics">Electronics</option>
+      <option value="Footwear">Footwear</option>
+      <option value="Clothing">Clothing</option>
+      <option value="Furniture">Furniture</option>
+      <option value="Groceries">Groceries</option>
+    </select>
+    <div id="productDetails"></div>
+
+    <script>
+     const allProductsDiv = document.getElementById("allProducts");
+const productDetailsDiv = document.getElementById("productDetails");
+const dropdown = document.getElementById("categoryFilter");
+ 
+async function loadProducts(category = "") {
+  let url = "/products";
+  if (category) {
+    url += "?category=" + category;
+  }
+
+  const response = await fetch(url);
+  const data = await response.json();
+
+  allProductsDiv.innerHTML = "";
+  productDetailsDiv.innerHTML = "";
+
+  data.forEach(product => {
+    const div = document.createElement("div");
+    div.innerText = product.name + " - ₹" + product.price;
+
+    div.addEventListener("click", async () => {
+      const res = await fetch(`/products/${product.id}`);
+      const details = await res.json();
+
+      productDetailsDiv.innerHTML = `
+        <h2>${details.name}</h2>
+        <p>Price: ₹${details.price}</p>
+        <p>Category: ${details.category}</p>
+      `;
+    });
+
+    allProductsDiv.appendChild(div);
+  });
+}
+ 
+loadProducts();
+
+ 
+dropdown.addEventListener("change", function() {
+  loadProducts(this.value);
+});
+    </script>
+  </body>
+</html>

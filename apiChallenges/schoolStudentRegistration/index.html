@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>My Page</title>
+</head>
+
+<body>
+  <form id="registrationForm">
+    <label for="fullName">Full Name</label>
+    <input id="fullName" type="text" placeholder="Enter Your Full Name" required><br>
+
+    <label for="studentAge">Age</label>
+    <input id="studentAge" type="number" placeholder="Enter Your Age" required>
+    <br>
+    <label for="studentGrade">Grade</label>
+    <input id="studentGrade" type="number" placeholder="Enter Your Grade" required>
+    <br>
+    <fieldset>
+      <legend>Favorite Subjects</legend>
+      <input type="checkbox" id="math" class="checkbox" value="Math">
+      <label for="math">Math</label>
+      <input type="checkbox" id="history" value="History" class="checkbox">
+      <label for="history">History</label>
+      <input type="checkbox" id="english" value="English" class="checkbox">
+      <label for="english">English</label>
+      <input type="checkbox" id="hindi" value="Hindi" class="checkbox">
+      <label for="hindi">Hindi</label>
+    </fieldset>
+    <br>
+
+    <input type="checkbox" id="scholarship">
+    <label for="scholarship">Do you have a scholarship?</label>
+
+
+    <button type="button" id="submitBtn">Submit</button>
+
+    <p id="confirmationMse"></p>
+    <p id="errorMsg"></p>
+  </form>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
