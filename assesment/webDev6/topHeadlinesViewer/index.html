@@ -1,3 +1,51 @@
+
+<!-- Challenge 3: Top Headlines Viewer
+Problem Overview
+You are building a news application that displays the latest articles. Users can switch between different categories to view relevant news.
+
+Your Task
+Create the following elements in your HTML:
+Buttons for these categories:
+General
+Business
+Sports
+Technology
+A container to display news articles
+When the page loads:
+By default, fetch and display articles from the General category
+When a category button is clicked:
+Fetch articles for the selected category
+Update the displayed articles
+For each article, display:
+Title
+Source name
+Each time new data is fetched:
+Clear the existing articles
+Display the newly fetched articles
+API Endpoints
+General:
+plain text
+https://newsapi.org/v2/top-headlines?country=us&apiKey=YOUR_API_KEY
+Business:
+plain text
+https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=YOUR_API_KEY
+Sports:
+plain text
+https://newsapi.org/v2/top-headlines?country=us&category=sports&apiKey=YOUR_API_KEY
+Technology:
+plain text
+https://newsapi.org/v2/top-headlines?country=us&category=technology&apiKey=YOUR_API_KEY
+Hints
+Use the fetch() function to get data from the API
+Convert the response using .json()
+Use either .then() or async/await
+Note (for learner reference only)
+Replace YOUR_API_KEY with your actual API key
+You will need to register on NewsAPI to get your API key
+Write your code in your local environment
+Use the browser’s Inspect / Developer Tools to debug
+ -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,5 +65,4 @@
     <input type="radio" name="category" id="categories" value="Technology">Technology
     <div id="displayContainer"></div>
 </body>
-
 </html>
