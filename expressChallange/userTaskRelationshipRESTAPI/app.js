@@ -1,12 +1,12 @@
 const express=require('express');
+const user = require('./routers/user');
+const task = require('./routers/task');
+
 const app=express();
 
 app.use(express.json());
-let userId=0
-let taskId=0
-let users=[];
-let tasks=[];
-
+ app.use('/api/v1',user);
+ app.use('/api/v1/users',task);
 
 
 

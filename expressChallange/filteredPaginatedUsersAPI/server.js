@@ -1,4 +1,4 @@
-const express=require('express');
+const express=require('express') ;
 const app=express();
 const router=require('./router/curd')
 app.use(express.json())
